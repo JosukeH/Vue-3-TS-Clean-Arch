@@ -3,7 +3,7 @@
 import { UsersInMemoryRepository as __tla_0 } from 'pkg-users-core'
 
 import { ref, onBeforeMount } from 'vue'
-import UserItems from '../components/UserItems .vue';
+import UserItems from '../components/UserItems.vue';
 
 const usersRepository = new __tla_0()
 const users = ref([])

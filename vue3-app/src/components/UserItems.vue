@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import placeHolderApi from '../api/placeHolderApi'
-import type {User} from '../types/User';
+import type User from '../types/User';
 
 const users = ref<User[]>([]);
 
@@ -18,7 +18,7 @@ placeHolderApi.get<User[]>('/users')
   <div class="px-4 sm:px-6 lg:px-8">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <h1 class="text-base font-semibold leading-6 text-gray-900">Lista de publicaciones</h1>
+        <h1 class="text-base font-semibold leading-6 text-gray-900">Lista de usuarios</h1>
       </div>
       <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
         <button type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add user</button>
@@ -39,13 +39,15 @@ placeHolderApi.get<User[]>('/users')
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-              <tr v-for="post in users" :key="post.id">
-                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{{ post.name }}</td>
-                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ post.id }}</td>
+              <tr v-for="user in users" :key="user.id">
+                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{{ user.name }}</td>
+                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ user.id }}</td>
                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                    >Ver<span class="sr-only">, {{ post.id }}</span></a
-                  >
+                  
+                  <router-link class="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900" 
+                  :to="'/users/'+ user.id">
+                  Ver
+                  </router-link>
                 </td>
                   
                 
